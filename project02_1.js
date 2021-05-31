@@ -30,13 +30,13 @@ function generateImgTags() {
 };
 
 generateImgTags();
+generateButtons();
 let main = document.getElementById("main");
 let extra = document.getElementById("extra");
 let images = document.querySelectorAll(".images");
 //初期値
 main.setAttribute("data-index","0");
 slideJump(0);
-generateButtons();
 
 function slideJump(number) {
     let index = parseInt(main.getAttribute("data-index"));
@@ -77,7 +77,7 @@ function displayAnimation(curr, next, animationType) {
 function infoBoxAnimation(number) {
     let infoBox = document.getElementById("infoBox");
     let innerText = `
-        <h4 class="p-2 m-2 w-25 bg-success text-center">${products[number].number}</h4>
+        <h4 class="col-2 bg-success text-center p-2 m-2">${products[number].number}</h4>
         <div>
             <h6>${products[number].name}</h6>
             <h6>${products[number].price}</h6>
