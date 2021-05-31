@@ -8,9 +8,9 @@ class Product {
 }
 
 const products = [
-    new Product(1,"ブレッド","200円","https://cdn.pixabay.com/photo/2018/06/10/20/30/bread-3467243_1280.jpg"),
-    new Product(2,"ワッフル", "80円","https://cdn.pixabay.com/photo/2016/03/17/07/50/waffles-1262435_1280.jpg"),
-    new Product(3,"クロワッサン","100円","https://cdn.pixabay.com/photo/2012/02/28/00/55/background-17943_1280.jpg"),
+    new Product(1,"ブレッド","100円","https://cdn.pixabay.com/photo/2018/06/10/20/30/bread-3467243_1280.jpg"),
+    new Product(2,"ワッフル", "100円","https://cdn.pixabay.com/photo/2016/03/17/07/50/waffles-1262435_1280.jpg"),
+    new Product(3,"クロワッサン","120円","https://cdn.pixabay.com/photo/2012/02/28/00/55/background-17943_1280.jpg"),
     new Product(4,"クッキー","120円","https://cdn.pixabay.com/photo/2016/11/17/22/53/biscuit-1832917_1280.jpg"),
     new Product(5,"サンドイッチ","200円","https://cdn.pixabay.com/photo/2017/03/10/13/49/fast-food-2132863_1280.jpg"),
     new Product(6,"コーヒー","120円","https://cdn.pixabay.com/photo/2012/04/14/15/14/coffee-34251_1280.png"), 
@@ -24,7 +24,7 @@ function generateImgTags() {
     let imgBox = document.getElementById("imgBox");    
     for(let i = 0; i < products.length; i++) {
         imgBox.innerHTML += `
-            <div class ="images d-flex justify-content-center p-2"><img class="w-100 h-100" src="${products[i].imgUrl}"></div>
+            <div class="images p-1"><img class="h-100 w-100" src="${products[i].imgUrl}"></div>
         `;
     };
 };
@@ -46,8 +46,8 @@ function slideJump(number) {
     main.setAttribute("data-index", number.toString());
 
     infoBoxAnimation(number);
-    if(index > number) displayAnimation(curr, next, "left");
-    displayAnimation(curr, next, "right");
+    if(number - index < 0) displayAnimation(curr, next, "left");
+    else displayAnimation(curr, next, "right");
 }
 
 function displayAnimation(curr, next, animationType) {
@@ -64,9 +64,9 @@ function displayAnimation(curr, next, animationType) {
     extra.classList.add("deplete-animation");
  
     if(animationType == "right") {
-        slider.innerHTML = ""; 
+        slider.innerHTML = "";
         slider.append(main);
-        slider.append(extra);        
+        slider.append(extra);          
     } else if (animationType == "left") {
         slider.innerHTML = "";
         slider.append(extra);
